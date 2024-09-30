@@ -19,5 +19,7 @@ sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
 
 # Start Tailscale with advertise-routes
 sudo tailscale up --advertise-routes=$1 --accept-routes #  --snat-subnet-routes=false
+
+# Configure iptables on each subnet router to clamp the maximum segment size (MSS) to the maximum transmission unit (MTU).
 iptables -t mangle -A FORWARD -o tailscale0 -p tcp -m tcp \
         --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
