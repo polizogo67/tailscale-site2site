@@ -66,4 +66,5 @@ Add Route to other devices
 ```bash
 sudo ip route add 192.168.69.0/24 via 192.168.1.100
 ip route show
+tracepath -n 192.168.69.20
 ```
