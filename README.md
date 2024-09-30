@@ -18,3 +18,10 @@ To create a site-to-site connection between two or more subnets:
 4. Approve the subnet routers.
 5. Configure the other devices on each subnet.
 Test the connection between the subnets.
+
+## Example Scenario
+
+| Subnet                    | Subnet A      | Subnet B          |
+|----------                 |----------     |----------         |
+| Subnet CIDR range         | 192.0.2.0/24  | 198.51.100.0/24   |
+| Subnet router IP address  | 192.0.2.2     | 198.51.100.2      |
