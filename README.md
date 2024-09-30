@@ -41,3 +41,29 @@ chmod +x tools/linux_router.sh
 ```
 
 Alternative, you can follow the process from the [docs](https://tailscale.com/kb/1019/subnets).
+
+You can ping other Tailscale clients by running:
+```bash
+tailscale status    # lists the tailscale nodes
+tailscale ping node # choose & ping an online node
+tailscale netcheck  # latency from the relays
+```
+
+Perform Test
+```bash
+# One one Node run
+iperf3 -s
+# On the other node run
+iperf3 -c node
+```
+
+Usefull Commands
+```bash
+ip route show table 52  # Tailscale routing table
+```
+
+Add Route to other devices
+```bash
+sudo ip route add 192.168.69.0/24 via 192.168.1.100
+ip route show
+```
