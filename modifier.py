@@ -120,8 +120,8 @@ def main() -> None:
         case "Windows":
             create_ip_routes_windows(unknown, cfg.getGateway())
         case "Linux":
-            # create_ip_routes_linux(unknown, cfg.getGateway())
-            create_ip_routes_windows(unknown, cfg.getGateway())
+            create_ip_routes_linux(unknown, cfg.getGateway())
+            # create_ip_routes_windows(unknown, cfg.getGateway())
 
 
 
