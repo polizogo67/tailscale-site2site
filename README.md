@@ -28,7 +28,7 @@ To create a site-to-site connection between two or more subnets:
 ## Usage
 
 ```bash
-git clone ...
+git clone https://github.com/polizogo67/tailscale-site2site.git
 cd tailscale-site2site
 ```
 
@@ -70,7 +70,12 @@ tracepath -n 192.168.69.20
 ```
 
 ## Configure Other PCs
+
+Edit [config.yaml](configs/config.yaml) in order to fit your needs.
+
 ```bash
+python -m venv env
+source env/bin/activate
 pip install -r requirements.txt
-python modifier.py
+python modifier.py --config configs/config.yaml
 ```
