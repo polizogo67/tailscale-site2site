@@ -59,17 +59,10 @@ def create_ip_routes_linux(subnets, gateway:str):
     os.system(script_path)
 
 def create_ip_routes_windows(subnets, gateway:str):
-    script = "param(\n"
-    script += "    [string]$gateway = \"192.168.1.100\"\n"
-    script += ")\n\n"
-    script += "foreach ($subnet in @(\n"
+    script = "\n"
     for subnet in subnets:
-        script += f"    \"{subnet}\",\n"
-    script = script.rstrip(",\n") + "\n"
-    script += ")) {\n"
-    script += "    $command = \"New-NetRoute -DestinationPrefix $subnet -NextHop $gateway\"\n"
-    script += "    Invoke-Expression $command\n"
-    script += "}\n\n"
+        script += f"New-NetRoute -DestinationPrefix {subnet} -NextHop {gateway} \n"
+
     script += "Get-NetRoute\n"
 
     # Add Comments to revert changes
@@ -127,8 +120,8 @@ def main() -> None:
         case "Windows":
             create_ip_routes_windows(unknown, cfg.getGateway())
         case "Linux":
-            create_ip_routes_windows(unknown, cfg.getGateway())
             # create_ip_routes_linux(unknown, cfg.getGateway())
+            create_ip_routes_windows(unknown, cfg.getGateway())
 
 
 
